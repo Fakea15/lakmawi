@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+
+
+<br/><br/>
+
+<div class="form-group container">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input type="text" class="form-control" name="username" placeholder="Username">
+        </div>
+        <div class="mb-3">
+            <input type="password" class="form-control" name="password" placeholder="Password">
+        </div>
+        <br/>
+        <button class="btn btn-primary">Login</button>
+    </form>
+    <br/>
+    <p>Account I la neih loh chuan tah hian <a href="{% url 'register' %}">SignUp<a> rawh</a></a> </p>
+</div>
+
+
+{% endblock %}
+

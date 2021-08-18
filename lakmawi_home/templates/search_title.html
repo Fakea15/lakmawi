@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+{% if searched %}
+<div class="card container" xmlns="http://www.w3.org/1999/html">
+  <div class="card-header">
+    <br/>
+    {% for post in posts %}
+    <div class="card-body">
+    <img src="{{ post.image.url }}" class="card-img-top" alt="...">
+    <h5 class="card-title">{{ post.title }}</h5>
+    <p class="card-text">{{ post.description }}</p>
+
+        <form action="{% url 'like_post' post.pk %}" method="POST">
+            {% csrf_token %}
+            <br/>
+            <div class="d-grid gap-2 col-6 mx-auto">
+              <button  class="btn btn-outline-light btn-lg" type="button"><a href="{% url 'post-details' post.pk %}" style="text-decoration: none; color: white;">
+                  Like duh tan
+              </a></button>
+            </div>
+            <hr/>
+        </form>
+
+    {% endfor %}
+        {% else %}
+{% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Upload Image{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+<br/>
+
+<br/><br/>
+<div class="form-group container">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary">Post</button>
+    </form>
+</div>
+
+{% endif %}
+{% endblock %}
+

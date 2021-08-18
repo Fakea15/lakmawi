@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<br/>
+
+<div class="card container">
+  <div class="card-header">
+  </div>
+  <div class="card-body">
+    <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.image }}">
+    <h5 class="card-title">{{ post.title }}</h5>
+    <p class="card-text">{{ post.description }}</p>
+    {% if user.is_authenticated %}
+    <form action="{% url 'like_post' post.pk %}" method="POST">
+      {% csrf_token %}
+      {% if liked %}
+        <button type="submit" name="post_id" value="{{ post.id }}", class="btn btn-danger btn-sm">Unlike</button>
+        - {{ total_likes }} Likes
+      {% else %}
+        <button type="submit" name="post_id" value="{{ post.id }}", class="btn btn-primary btn-sm">Like</button>
+        - {{ total_likes }} Likes
+      {% endif %}
+
+      {% if user.id == post.author.id %}
+        <button style="float: right;" class="btn btn-outline-danger btn-sm"><a href="{% url 'delete_post' post.pk %}" style="text-decoration: none;
+        color: black">Delete</a></button>
+      {% endif %}
+
+    </form>
+
+    {% else %}
+    <br/><br/>
+    <strong>He post hi like ve I duh anih chuan I <a href="{% url 'login' %}" style="text-decoration: none;">Login</a> emaw I in <a href="{% url 'register' %}" style="text-decoration: none;">register</a> phawt angai ang.</strong>
+    {% endif %}
+  </div>
+</div>
+
+<br/><br/>
+
+
+{% endblock %}
