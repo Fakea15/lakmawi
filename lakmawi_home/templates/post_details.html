@@ -14,10 +14,10 @@
     <form action="{% url 'like_post' post.pk %}" method="POST">
       {% csrf_token %}
       {% if liked %}
-        <button type="submit" name="post_id" value="{{ post.id }}", class="btn btn-danger btn-sm">Unlike</button>
+        <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-danger btn-sm">Unlike</button>
         - {{ total_likes }} Likes
       {% else %}
-        <button type="submit" name="post_id" value="{{ post.id }}", class="btn btn-primary btn-sm">Like</button>
+        <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-primary btn-sm">Like</button>
         - {{ total_likes }} Likes
       {% endif %}
 
