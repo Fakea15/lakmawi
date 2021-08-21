@@ -5,7 +5,7 @@ from django.urls import reverse
 # database
 class Post(models.Model):
     title = models.CharField(max_length=30)
-    author = models.AutoField(User, on_delete=models.CASCADE)
+    author = models.AutoField(User)
     image = models.ImageField(null=False, blank=False, upload_to='images/')
     description = models.TextField(max_length=300)
     likes = models.ManyToManyField(User, related_name='blog_posts')
